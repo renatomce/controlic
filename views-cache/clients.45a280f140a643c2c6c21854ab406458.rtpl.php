@@ -6,8 +6,8 @@
     Lista de Clientes
   </h1>
   <ol class="breadcrumb">
-    <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active"><a href="/admin/clients">Usuários</a></li>
+    <li><a href="/admin"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    <li class="active"><a href="/admin/clients">Clientes</a></li>
   </ol>
 </section>
 
@@ -23,7 +23,7 @@
               <div class="box-tools">
                 <form action="/admin/clients">
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="search" class="form-control pull-right" placeholder="Search" value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                    <input type="text" name="search" class="form-control pull-right" placeholder="Pesquisar" value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                     <div class="input-group-btn">
                       <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                     </div>
@@ -42,7 +42,7 @@
                     <th>CNPJ</th>
                     <th>Telefone</th>
                     <th>Email</th>
-                    <th>Liberado em</th>
+                    <th>Liberado</th>
                     <th>Licença expira</th>
                     <th>Dias até expirar</th>
                   </tr>
@@ -57,12 +57,12 @@
                     <td><?php echo htmlspecialchars( $value1["descnpj"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["desnrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                    <td><?php echo htmlspecialchars( $value1["deslicregister"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                    <td><?php echo htmlspecialchars( $value1["deslicexpires"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                    <td>(DIAS ATÉ EXPIRAR)</td>
+                    <td><?php echo formatDate($value1["deslicregister"]); ?></td>
+                    <td><?php echo formatDate($value1["deslicexpires"]); ?></td>
+                    <td><?php echo countDays($value1["deslicregister"], $value1["deslicexpires"]); ?></td>
                     <td>
+                        <a href="/admin/clients/<?php echo htmlspecialchars( $value1["idclient"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/register" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i> <b> Liberar</b></a>
                       <a href="/admin/clients/<?php echo htmlspecialchars( $value1["idclient"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                      <a href="/admin/clients/<?php echo htmlspecialchars( $value1["idclient"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/register" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Registrar licença</a>
                       <a href="/admin/clients/<?php echo htmlspecialchars( $value1["idclient"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
                     </td>
                   </tr>

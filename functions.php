@@ -4,7 +4,17 @@ use \Controlic\Model\User;
 
 function formatDate($date) {
 
-	return date('d/m/Y', strtotime($date));
+	return date('d/m/Y H:i', strtotime($date));
+
+}
+
+function countDays($licregister, $licexpires) {
+
+	$register = new DateTime($licregister);
+	$expires = new DateTime($licexpires);
+	$days = $register->diff($expires);
+
+	return $days->days;
 
 }
 

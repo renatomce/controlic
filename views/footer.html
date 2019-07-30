@@ -2,10 +2,10 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Anything you want
+      Controle de licenças GourmetSA
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+    <strong><a href="http://www.easysistemas.com.br/">Easy Sistemas</a></strong>
   </footer>
 
   <!-- Control Sidebar -->

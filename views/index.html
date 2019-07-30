@@ -6,8 +6,8 @@
       Ordens de liberação
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-      <li class="active">Here</li>
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active">Ordens</li>
     </ol>
   </section>
 

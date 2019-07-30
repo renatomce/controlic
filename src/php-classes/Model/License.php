@@ -5,7 +5,7 @@ namespace Controlic\Model;
 use \Controlic\DB\Sql;
 use \Controlic\Model;
 
-class Client extends Model {
+class License extends Model {
 
 	public static function listAll()
 	{

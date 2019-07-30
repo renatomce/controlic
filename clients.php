@@ -1,8 +1,8 @@
 <?php 
 
 use \Controlic\PageAdmin;
-use \Controlic\Model\Client;
 use \Controlic\Model\User;
+use \Controlic\Model\Client;
 
 $app->get('/admin/clients', function() {
 
@@ -44,6 +44,79 @@ $app->get('/admin/clients', function() {
 		"pages"=>$pages
 	));
 
+
+});
+
+$app->get("/admin/clients/create", function() {
+
+	User::verifyLogin();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("clients-create");
+
+});
+
+$app->post("/admin/clients/create", function() {
+
+	User::verifyLogin();
+
+	$client = new Client();
+
+	$client->setData($_POST);
+
+	$client->save();
+
+	header("Location: /admin/clients");
+	exit;
+
+});
+
+$app->get("/admin/clients/:idclient", function($idclient) {
+
+	User::verifyLogin();
+
+	$client = new Client();
+
+	$client->get((int)$idclient);
+
+	$page = new PageAdmin();
+
+	$page->setTpl("clients-update", array(
+		"client"=>$client->getValues()
+	));
+
+});
+
+$app->post("/admin/clients/:idclient", function($idclient) {
+
+	User::verifyLogin();
+
+	$client = new Client();
+
+	$client->get((int)$idclient);
+
+	$client->setData($_POST);
+
+	$client->update();	
+
+	header("Location: /admin/clients");
+	exit;
+
+});
+
+$app->get("/admin/clients/:idclient/delete", function($idclient) {
+
+	User::verifyLogin();	
+
+	$client = new Client();
+
+	$client->get((int)$idclient);
+
+	$client->delete();
+
+	header("Location: /admin/clients");
+	exit;
 
 });
 
