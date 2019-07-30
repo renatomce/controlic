@@ -115,8 +115,62 @@ $app->get("/admin/clients/:idclient/delete", function($idclient) {
 
 	$client->delete();
 
+	User::logout();
+
 	header("Location: /admin/clients");
 	exit;
+
+});
+
+$app->get("/admin/clients/:idclient/register", function($idclient) {
+
+	User::verifyLogin();
+
+	$client = new Client();
+
+	$client->get((int)$idclient);
+
+	$page = new PageAdmin();
+
+	$page->setTpl("license-register", array(
+		"client"=>$client->getValues()
+	));
+
+});
+
+$app->post("/admin/clients/:idclient/register", function($idclient) {
+
+	User::verifyLogin();
+
+	$client = new Client();
+
+	$client->get((int)$idclient);
+
+	$client->setData($_POST);
+
+	$client->updateLicense();	
+
+	header("Location: /admin/clients/$idclient/success");
+	exit;
+
+});
+
+$app->get("/admin/clients/:idclient/success", function($idclient) {
+
+	User::verifyLogin();
+
+	$client = new Client();
+
+	$client->get((int)$idclient);
+
+	$client->getLicense((int)$idclient);
+
+	$page = new PageAdmin();
+
+	$page->setTpl("license-success", array(
+		"client"=>$client->getValues()
+	));
+
 
 });
 

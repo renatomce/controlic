@@ -7,20 +7,9 @@ use \Controlic\Model;
 
 class Client extends Model {
 
-	public static function listAll()
-	{
-
-		$sql = new Sql();
-
-		return $sql->select("SELECT * FROM tb_clients a INNER JOIN tb_registers b USING(idclient) WHERE a.idclient = b.idclient");
-
-	}
-
 	public function save()
 	{
-
 		$sql = new Sql();
-
 		$results = $sql->select("CALL sp_clients_save(:desrazsoc, :desfantasia, :descnpj, :desnrphone, :desemail, :deslicexpires)", array(
 			":desrazsoc"=>utf8_decode($this->getdesrazsoc()),
 			":desfantasia"=>utf8_decode($this->getdesfantasia()),
@@ -29,9 +18,7 @@ class Client extends Model {
 			":desemail"=>$this->getdesemail(),
 			":deslicexpires"=>$this->getdeslicexpires()
 		));
-
 		$this->setData($results[0]);
-
 	}
 
 	public function get($idclient)
@@ -52,6 +39,21 @@ class Client extends Model {
 
 	}
 
+	public function getLicense($idclient)
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("SELECT * FROM tb_registers WHERE idclient = :idclient", array(
+			":idclient"=>$idclient
+		));
+
+		$data = $results[0];
+
+		$this->setData($data);
+
+	}
+
 	public function update()
 	{
 
@@ -64,6 +66,20 @@ class Client extends Model {
 			":descnpj"=>$this->getdescnpj(),
 			":desnrphone"=>$this->getdesnrphone(),
 			":desemail"=>$this->getdesemail()
+		));
+
+		$this->setData($results[0]);		
+
+	}
+
+	public function updateLicense()
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("CALL sp_licenseupdate_save(:idclient, :deslicexpires)", array(
+			":idclient"=>$this->getidclient(),
+			":deslicexpires"=>$this->getdeslicexpires()
 		));
 
 		$this->setData($results[0]);		
@@ -92,6 +108,7 @@ class Client extends Model {
 			SELECT SQL_CALC_FOUND_ROWS *
 			FROM tb_clients a
 			INNER JOIN tb_registers b USING(idclient) WHERE a.idclient = b.idclient
+			ORDER BY b.deslicexpires
 			LIMIT $start, $itemsPerPage;
 		");
 
@@ -117,7 +134,7 @@ class Client extends Model {
 			FROM tb_clients a
 			INNER JOIN tb_registers b USING(idclient)
 			WHERE a.desrazsoc LIKE :search OR a.desfantasia LIKE :search OR a.desemail = :search
-			ORDER BY a.desfantasia
+			ORDER BY b.deslicexpires
 			LIMIT $start, $itemsPerPage;
 		", [
 			':search'=>'%'.$search.'%'

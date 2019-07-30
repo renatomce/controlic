@@ -7,7 +7,7 @@
   </h1>
   <ol class="breadcrumb">
     <li><a href="/admin"><i class="fa fa-dashboard"></i> Inicio</a></li>
-    <li class="active"><a href="/admin/clients">Clientes</a></li>
+    <li class="active">Clientes</li>
   </ol>
 </section>
 
@@ -44,7 +44,7 @@
                     <th>Email</th>
                     <th>Liberado</th>
                     <th>Licença expira</th>
-                    <th>Dias até expirar</th>
+                    <th style="width: 15px">Dias restantes</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -61,9 +61,9 @@
                     <td><?php echo formatDate($value1["deslicexpires"]); ?></td>
                     <td><?php echo countDays($value1["deslicregister"], $value1["deslicexpires"]); ?></td>
                     <td>
-                        <a href="/admin/clients/<?php echo htmlspecialchars( $value1["idclient"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/register" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i> <b> Liberar</b></a>
+                      <a href="/admin/clients/<?php echo htmlspecialchars( $value1["idclient"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/register" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i> <b> Liberar</b></a>
                       <a href="/admin/clients/<?php echo htmlspecialchars( $value1["idclient"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                      <a href="/admin/clients/<?php echo htmlspecialchars( $value1["idclient"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+                      <a href="/admin/clients/<?php echo htmlspecialchars( $value1["idclient"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" onclick="return confirm('Tem certeza que quer excluir este cliente? A operação é irreversível')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
                     </td>
                   </tr>
                   <?php } ?>

@@ -3,12 +3,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Lista de Usuários
+    Lista de Clientes
   </h1>
   <ol class="breadcrumb">
     <li><a href="/admin"><i class="fa fa-dashboard"></i> Inicio</a></li>
     <li><a href="/admin/clients">Clientes</a></li>
-    <li class="active"><a href="/admin/clients/create">Cadastrar</a></li>
+    <li class="active">Cadastrar</li>
   </ol>
 </section>
 
@@ -47,7 +47,7 @@
             </div>
             <div class="form-group">
                 <label for="deslicexpires">Licença expira em</label>
-                <input type="datetime-local" class="form-control" id="deslicexpires" name="deslicexpires">
+                <input style="width: 200px" type="datetime-local" class="form-control" id="deslicexpires" name="deslicexpires">
               </div>
           </div>
           <!-- /.box-body -->

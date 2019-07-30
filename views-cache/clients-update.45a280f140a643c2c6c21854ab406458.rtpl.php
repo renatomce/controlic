@@ -3,7 +3,8 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Lista de Clientes
+    <?php echo htmlspecialchars( $client["desfantasia"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+
   </h1>
 </section>
 

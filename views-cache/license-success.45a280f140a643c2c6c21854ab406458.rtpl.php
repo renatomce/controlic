@@ -1,0 +1,43 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    <?php echo htmlspecialchars( $client["desfantasia"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/admin"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    <li><a href="/admin/clients">Clientes</a></li>
+    <li class="active">Registrar</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+  <div id="license-window" class="row">
+  	<div class="col-md-12">
+  		<div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title"><b>Licença liberada com sucesso!</b></h3>
+        </div>
+        <!-- /.box-header -->
+          <div class="box-body">
+            <div class="form-group">
+                <label for="deslicexpires">SQL</label>
+                <p><?php echo licenseSql($client["deslicexpires"]); ?></p>
+              </div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <a href="/admin/clients" class="btn btn-primary">Retornar</a>
+          </div>
+      </div>
+  	</div>
+  </div>
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
