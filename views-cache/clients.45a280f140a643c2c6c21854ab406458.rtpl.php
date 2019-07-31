@@ -23,7 +23,7 @@
               <div class="box-tools">
                 <form action="/admin/clients">
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="search" class="form-control pull-right" placeholder="Pesquisar" value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                    <input type="text" name="search" class="form-control pull-right" style="width: 250px" placeholder="Pesquisar por fantasia, razão, liberado por..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                     <div class="input-group-btn">
                       <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                     </div>
@@ -42,7 +42,8 @@
                     <th>CNPJ</th>
                     <th>Telefone</th>
                     <th>Email</th>
-                    <th>Liberado</th>
+                    <th>Liberado por</th>
+                    <th>Liberado em</th>
                     <th>Licença expira</th>
                     <th style="width: 15px">Dias restantes</th>
                   </tr>
@@ -57,6 +58,7 @@
                     <td><?php echo htmlspecialchars( $value1["descnpj"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["desnrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                    <td><?php echo htmlspecialchars( $value1["deslogin"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo formatDate($value1["deslicregister"]); ?></td>
                     <td><?php echo formatDate($value1["deslicexpires"]); ?></td>
                     <td><?php echo countDays($value1["deslicregister"], $value1["deslicexpires"]); ?></td>

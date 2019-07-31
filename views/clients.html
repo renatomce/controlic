@@ -23,7 +23,7 @@
               <div class="box-tools">
                 <form action="/admin/clients">
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="search" class="form-control pull-right" placeholder="Pesquisar" value="{$search}">
+                    <input type="text" name="search" class="form-control pull-right" style="width: 250px" placeholder="Pesquisar por fantasia, razão, liberado por..." value="{$search}">
                     <div class="input-group-btn">
                       <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                     </div>
@@ -42,7 +42,8 @@
                     <th>CNPJ</th>
                     <th>Telefone</th>
                     <th>Email</th>
-                    <th>Liberado</th>
+                    <th>Liberado por</th>
+                    <th>Liberado em</th>
                     <th>Licença expira</th>
                     <th style="width: 15px">Dias restantes</th>
                   </tr>
@@ -56,6 +57,7 @@
                     <td>{$value.descnpj}</td>
                     <td>{$value.desnrphone}</td>
                     <td>{$value.desemail}</td>
+                    <td>{$value.deslogin}</td>
                     <td>{function="formatDate($value.deslicregister)"}</td>
                     <td>{function="formatDate($value.deslicexpires)"}</td>
                     <td>{function="countDays($value.deslicregister, $value.deslicexpires)"}</td>

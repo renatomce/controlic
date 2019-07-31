@@ -3,11 +3,21 @@
 use \Controlic\PageAdmin;
 use \Controlic\Model\User;
 
+$app->get('/', function() {
+
+	User::verifyLogin();
+
+	header("Location: /admin/clients");
+	exit;
+
+});
+
 $app->get('/admin', function() {
 
 	User::verifyLogin();
-	$page = new PageAdmin();
-	$page->setTpl("index");
+
+	header("Location: /admin/clients");
+	exit;
 
 });
 

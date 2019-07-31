@@ -20,7 +20,7 @@ function countDays($licregister, $licexpires) {
 
 function licenseSql($licexpires) {
 
-	return "UPDATE SIS_PARAMETROS SET LIC_LIMITE = "."'".date('d.m.Y H.i', strtotime($licexpires))."'"." AND LIC_CONTROLE = NULL;";
+	return "UPDATE SIS_PARAMETROS SET LIC_LIMITE = "."'".date('d.m.Y H.i', strtotime($licexpires))."'".", LIC_CONTROLE = NULL;";
 
 }
 
@@ -38,7 +38,7 @@ function getUserName() {
 
 }
 
-function getIDUser() {
+function getIdUser() {
 
 	$user = User::getFromSession();
 

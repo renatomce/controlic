@@ -8,16 +8,20 @@ use \Controlic\Model;
 class Client extends Model {
 
 	public function save()
-	{
+	{	
+
 		$sql = new Sql();
-		$results = $sql->select("CALL sp_clients_save(:desrazsoc, :desfantasia, :descnpj, :desnrphone, :desemail, :deslicexpires)", array(
+
+		$results = $sql->select("CALL sp_clients_save(:desrazsoc, :desfantasia, :descnpj, :desnrphone, :desemail, :deslicexpires, :iduser)", array(
 			":desrazsoc"=>utf8_decode($this->getdesrazsoc()),
 			":desfantasia"=>utf8_decode($this->getdesfantasia()),
 			":descnpj"=>$this->getdescnpj(),
 			":desnrphone"=>$this->getdesnrphone(),
 			":desemail"=>$this->getdesemail(),
-			":deslicexpires"=>$this->getdeslicexpires()
+			":deslicexpires"=>$this->getdeslicexpires(),
+			":iduser"=>getIdUser()
 		));
+
 		$this->setData($results[0]);
 	}
 
@@ -107,7 +111,8 @@ class Client extends Model {
 		$results = $sql->select("
 			SELECT SQL_CALC_FOUND_ROWS *
 			FROM tb_clients a
-			INNER JOIN tb_registers b USING(idclient) WHERE a.idclient = b.idclient
+			INNER JOIN tb_registers b ON a.idclient = b.idclient
+			INNER JOIN tb_users c ON b.iduser = c.iduser
 			ORDER BY b.deslicexpires
 			LIMIT $start, $itemsPerPage;
 		");
@@ -132,8 +137,9 @@ class Client extends Model {
 		$results = $sql->select("
 			SELECT SQL_CALC_FOUND_ROWS *
 			FROM tb_clients a
-			INNER JOIN tb_registers b USING(idclient)
-			WHERE a.desrazsoc LIKE :search OR a.desfantasia LIKE :search OR a.desemail = :search
+			INNER JOIN tb_registers b ON a.idclient = b.idclient
+			INNER JOIN tb_users c ON b.iduser = c.iduser
+			WHERE a.desrazsoc LIKE :search OR a.desfantasia LIKE :search OR a.desemail = :search OR c.deslogin LIKE :search
 			ORDER BY b.deslicexpires
 			LIMIT $start, $itemsPerPage;
 		", [
