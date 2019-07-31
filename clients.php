@@ -115,8 +115,6 @@ $app->get("/admin/clients/:idclient/delete", function($idclient) {
 
 	$client->delete();
 
-	User::logout();
-
 	header("Location: /admin/clients");
 	exit;
 
