@@ -14,7 +14,12 @@ function countDays($licregister, $licexpires) {
 	$expires = new DateTime($licexpires);
 	$days = $register->diff($expires);
 
-	return $days->days;
+	if ($days->days > 0)
+	{
+		return $days->days;
+	} else {
+		return 'Expirou';
+	}
 
 }
 
