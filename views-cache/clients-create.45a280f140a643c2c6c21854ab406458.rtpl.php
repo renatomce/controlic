@@ -35,11 +35,11 @@
             </div>
             <div class="form-group">
                 <label for="descnpj">CNPJ</label>
-                <input type="number" class="form-control" id="descnpj" name="descnpj" placeholder="Digite o CNPJ">
+                <input type="text" class="form-control" id="descnpj" name="descnpj" placeholder="Digite o CNPJ">
               </div>
             <div class="form-group">
               <label for="desnrphone">Telefone</label>
-              <input type="number" class="form-control" id="desnrphone" name="desnrphone" placeholder="Digite o telefone">
+              <input type="text" class="form-control" id="desnrphone" name="desnrphone" placeholder="Digite o telefone">
             </div>
             <div class="form-group">
               <label for="desemail">Email</label>

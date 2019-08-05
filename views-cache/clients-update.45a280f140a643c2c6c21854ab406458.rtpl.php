@@ -35,7 +35,7 @@
               </div>
             <div class="form-group">
               <label for="desnrphone">Telefone</label>
-              <input type="tel" class="form-control" id="desnrphone" name="desnrphone" placeholder="Digite o telefone"  value="<?php echo htmlspecialchars( $client["desnrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+              <input type="text" class="form-control" id="desnrphone" name="desnrphone" placeholder="Digite o telefone"  value="<?php echo htmlspecialchars( $client["desnrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
             <div class="form-group">
               <label for="desemail">Email</label>

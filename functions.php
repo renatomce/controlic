@@ -8,17 +8,20 @@ function formatDate($date) {
 
 }
 
-function countDays($licregister, $licexpires) {
+function countDays($licexpires) {
 
-	$register = new DateTime($licregister);
+	$current = new DateTime();
 	$expires = new DateTime($licexpires);
-	$days = $register->diff($expires);
+	$interval = $current->diff($expires);
 
-	if ($days->days > 0)
+	if ($interval->days > 7)
 	{
-		return $days->days;
+		return $interval->days;
+	} else if ($interval->days < 8 && $interval->days > 0) {	
+		$notif = $interval->days . ' (*)';
+		return $notif;
 	} else {
-		return 'Expirou';
+		return 'Expirou!';
 	}
 
 }

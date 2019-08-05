@@ -60,7 +60,7 @@
                     <td>{$value.deslogin}</td>
                     <td>{function="formatDate($value.deslicregister)"}</td>
                     <td>{function="formatDate($value.deslicexpires)"}</td>
-                    <td>{function="countDays($value.deslicregister, $value.deslicexpires)"}</td>
+                    <td>{function="countDays($value.deslicexpires)"}</td>
                     <td>
                       <a href="/admin/clients/{$value.idclient}/register" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i> <b> Liberar</b></a>
                       <a href="/admin/clients/{$value.idclient}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
@@ -73,6 +73,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
+                <span class="align-content-center">* A partir de 7 dias o cliente recebe notificação sobre a licença</span>
               <ul class="pagination pagination-sm no-margin pull-right">
                 {loop="$pages"}
                 <li><a href="{$value.href}">{$value.text}</a></li>

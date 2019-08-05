@@ -67,6 +67,8 @@ $app->post("/admin/clients/create", function() {
 
 	$client->save();
 
+//	$idclient = $client->getLastId(); var_dump($idclient); exit;
+
 	header("Location: /admin/clients");
 	exit;
 

@@ -101,6 +101,14 @@ class Client extends Model {
 
 	}
 
+	public static function getLastId() {
+
+		$sql = new Sql();
+
+		return $sql->select("SELECT MAX(idclient) FROM tb_clients");
+
+	}
+
 	public static function getPage($page = 1, $itemsPerPage = 10)
 	{
 

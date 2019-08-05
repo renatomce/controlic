@@ -61,7 +61,7 @@
                     <td><?php echo htmlspecialchars( $value1["deslogin"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo formatDate($value1["deslicregister"]); ?></td>
                     <td><?php echo formatDate($value1["deslicexpires"]); ?></td>
-                    <td><?php echo countDays($value1["deslicregister"], $value1["deslicexpires"]); ?></td>
+                    <td><?php echo countDays($value1["deslicexpires"]); ?></td>
                     <td>
                       <a href="/admin/clients/<?php echo htmlspecialchars( $value1["idclient"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/register" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i> <b> Liberar</b></a>
                       <a href="/admin/clients/<?php echo htmlspecialchars( $value1["idclient"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
@@ -75,6 +75,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
+                <span class="align-content-center">* A partir de 7 dias o cliente recebe notificação sobre a licença</span>
               <ul class="pagination pagination-sm no-margin pull-right">
                 <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
 
