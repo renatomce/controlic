@@ -14,14 +14,15 @@ function countDays($licexpires) {
 	$expires = new DateTime($licexpires);
 	$interval = $current->diff($expires);
 
-	if ($interval->days > 7)
-	{
-		return $interval->days;
-	} else if ($interval->days < 8 && $interval->days > 0) {	
+	if ($current > $expires) {
+		return 'Expirou!';
+	}
+	else if ($interval->days < 8) {	
 		$notif = $interval->days . ' (*)';
 		return $notif;
-	} else {
-		return 'Expirou!';
+	}
+	else {
+		return $interval->days;
 	}
 
 }
